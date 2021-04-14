@@ -1,4 +1,4 @@
-/** \file bugExample.cpp
+/** \file Lab3.cpp
  *  \brief     A little with logical bugs in it
  *  \details   This program is littered with logical bugs. Your task is the
  *              following:
@@ -35,7 +35,7 @@ void avgOddArray(const int[], const int, int&);
 int main() {
 	int choice;
 	const int SIZE = 10;
-
+	 
 	// Initialize array price
 	int price[SIZE] = { 12, 4, 8, 1, 17, 2, 4, 2, 9, 1 };
 	// Declare array quantity and total
@@ -48,7 +48,7 @@ int main() {
 		switch (choice) {
 			// Enter quantity
 		case 1:
-			fillInArray(quantity, 11);
+			fillInArray(quantity, SIZE); //fillInArray(quantity, 11) -> changed 11 with SIZE
 			break;
 			// Calculate total
 		case 2:
@@ -139,7 +139,7 @@ void multArrays(const int arrQuantity[], const int arrPrice[], int arrTotal[], c
  * @param size The size of the array.
  */
 void displayArray(const int arr[], const int size) {
-	int sum;
+	int sum = 0; //Sum is not initialized, initialing it with 0
 
 	for (int i = 1; i < size; ++i) {
 		cout << "\nValue at " << i << ": " << arr[i];
