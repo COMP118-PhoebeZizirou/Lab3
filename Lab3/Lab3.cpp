@@ -21,11 +21,14 @@ using namespace std;
 // Function prototypes
 int printMenu();
 void fillInArray(int[], const int);
-void multArrays(const int[], const int[], int[], const int);
-void displayArray(const int[], const int);
+void multArrays(const int[], const int[], double[], const int);
+void displayArray(const double[], const int);
 int sumOddArray(const int[], const int);
 bool isAllPositive(const int[], const int);
 void avgOddArray(const int[], const int, int&);
+
+//Global Const
+const int VAT = 21;		
 
 /**
  * <code>main</code> is the main function of this program.
@@ -38,8 +41,16 @@ int main() {
 	 
 	// Initialize array price
 	int price[SIZE] = { 12, 4, 8, 1, 17, 2, 4, 2, 9, 1 };
+
+	//Initialize price to random values in range (1-20)
+	for (int i = 0; i < SIZE; i++)
+	{
+		price[i] = 2; //rand
+	}
+
 	// Declare array quantity and total
-	int quantity[SIZE], total[9];
+	int quantity[SIZE];
+	double total[9];
 
 	// Interactive menu
 	do {
@@ -122,11 +133,11 @@ void fillInArray(int arr[], const int size) {
  * @param arrDest The array containing the source elements.
  * @param size The size of the arrays.
  */
-void multArrays(const int arrQuantity[], const int arrPrice[], int arrTotal[], const int size) {
+void multArrays(const int arrQuantity[], const int arrPrice[], double arrTotal[], const int size) {
 	assert(size > 0);
 
 	for (int i = 0; i <= size; ++i) {
-		arrTotal[i] = arrQuantity[i] + arrPrice[i + 1];
+		arrTotal[i] = (arrQuantity[i] + arrPrice[i + 1]) * VAT/100;
 	}
 }
 
@@ -138,7 +149,7 @@ void multArrays(const int arrQuantity[], const int arrPrice[], int arrTotal[], c
  * @param ar The array containing the values
  * @param size The size of the array.
  */
-void displayArray(const int arr[], const int size) {
+void displayArray(const double arr[], const int size) {
 	int sum = 0; //Sum is not initialized, initialing it with 0
 
 	for (int i = 1; i < size; ++i) {
